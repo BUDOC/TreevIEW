@@ -31,10 +31,10 @@ namespace TreevIEW
       TreeNode Fils2 = noeud.Nodes.Add("Moteur");
       Fils2.Nodes.Add(key: "M1", text: "Vilebrequin");
       Fils2.Nodes.Add(key: "M2", text: "Bielle");
-     // treeView1.Nodes.Find("M1", true)[0].Remove();
+      // treeView1.Nodes.Find("M1", true)[0].Remove();
       treeView1.SelectedNode = treeView1.Nodes.Find(key: "M1", true)[0];
       treeView1.SelectedNode.Nodes.Add(" M112", "Coussinet");
-      treeView1.ExpandAll();    
+      treeView1.ExpandAll();
     }
 
     /// <summary>
@@ -69,8 +69,6 @@ namespace TreevIEW
       }
     }
 
-   
-
     private void button2_Click(object sender, EventArgs e)
     {
       SaveTree(treeView1, "FileSaveTreeview");
@@ -83,7 +81,7 @@ namespace TreevIEW
 
     private void button4_Click(object sender, EventArgs e)
     {
-       treeView1.SelectedNode.Nodes.Add(textBoxCle.Text, textBoxDesignation.Text);
+      treeView1.SelectedNode.Nodes.Add(textBoxCle.Text, textBoxDesignation.Text);
     }
 
     private void buttonSuppressionNoeud_Click(object sender, EventArgs e)
