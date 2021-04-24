@@ -29,6 +29,7 @@ namespace TreevIEW
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       this.treeView1 = new System.Windows.Forms.TreeView();
       this.textBox1 = new System.Windows.Forms.TextBox();
       this.button1 = new System.Windows.Forms.Button();
@@ -43,36 +44,46 @@ namespace TreevIEW
       this.textBoxDesignation = new System.Windows.Forms.TextBox();
       this.buttonInsertionNoeud = new System.Windows.Forms.Button();
       this.buttonSuppressionNoeud = new System.Windows.Forms.Button();
+      this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.supprimerLeNoeudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.insérerUnNoeudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.renimmerLeNoeudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // treeView1
       // 
-      this.treeView1.Location = new System.Drawing.Point(22, 42);
+      this.treeView1.Location = new System.Drawing.Point(21, 42);
+      this.treeView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.treeView1.Name = "treeView1";
       this.treeView1.Size = new System.Drawing.Size(296, 386);
       this.treeView1.TabIndex = 0;
+      this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
       // 
       // textBox1
       // 
       this.textBox1.Location = new System.Drawing.Point(681, 42);
+      this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(194, 22);
+      this.textBox1.Size = new System.Drawing.Size(193, 22);
       this.textBox1.TabIndex = 1;
       this.textBox1.Text = "Nouveau nom";
       // 
       // button1
       // 
       this.button1.Location = new System.Drawing.Point(681, 70);
+      this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(194, 23);
+      this.button1.Size = new System.Drawing.Size(195, 23);
       this.button1.TabIndex = 2;
       this.button1.Text = "Renomme avec le contenu du dessus";
       this.button1.UseVisualStyleBackColor = true;
-    
+      this.button1.Click += new System.EventHandler(this.button1_Click);
       // 
       // treeView2
       // 
-      this.treeView2.Location = new System.Drawing.Point(350, 42);
+      this.treeView2.Location = new System.Drawing.Point(349, 42);
+      this.treeView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.treeView2.Name = "treeView2";
       this.treeView2.Size = new System.Drawing.Size(255, 386);
       this.treeView2.TabIndex = 3;
@@ -89,7 +100,7 @@ namespace TreevIEW
       // label2
       // 
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(358, 9);
+      this.label2.Location = new System.Drawing.Point(357, 9);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(73, 17);
       this.label2.TabIndex = 5;
@@ -98,8 +109,9 @@ namespace TreevIEW
       // button2
       // 
       this.button2.Location = new System.Drawing.Point(57, 437);
+      this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(194, 23);
+      this.button2.Size = new System.Drawing.Size(195, 23);
       this.button2.TabIndex = 6;
       this.button2.Text = "Enregistre Treeview1";
       this.button2.UseVisualStyleBackColor = true;
@@ -107,9 +119,10 @@ namespace TreevIEW
       // 
       // button3
       // 
-      this.button3.Location = new System.Drawing.Point(350, 437);
+      this.button3.Location = new System.Drawing.Point(349, 437);
+      this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(242, 23);
+      this.button3.Size = new System.Drawing.Size(243, 23);
       this.button3.TabIndex = 7;
       this.button3.Text = "Rappel fichier dans treeView2";
       this.button3.UseVisualStyleBackColor = true;
@@ -135,25 +148,28 @@ namespace TreevIEW
       // 
       // textBoxCle
       // 
-      this.textBoxCle.Location = new System.Drawing.Point(690, 274);
+      this.textBoxCle.Location = new System.Drawing.Point(691, 274);
+      this.textBoxCle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxCle.Name = "textBoxCle";
-      this.textBoxCle.Size = new System.Drawing.Size(194, 22);
+      this.textBoxCle.Size = new System.Drawing.Size(193, 22);
       this.textBoxCle.TabIndex = 10;
       this.textBoxCle.Text = "Key";
       // 
       // textBoxDesignation
       // 
-      this.textBoxDesignation.Location = new System.Drawing.Point(690, 325);
+      this.textBoxDesignation.Location = new System.Drawing.Point(691, 325);
+      this.textBoxDesignation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxDesignation.Name = "textBoxDesignation";
-      this.textBoxDesignation.Size = new System.Drawing.Size(194, 22);
+      this.textBoxDesignation.Size = new System.Drawing.Size(193, 22);
       this.textBoxDesignation.TabIndex = 11;
       this.textBoxDesignation.Text = "D";
       // 
       // buttonInsertionNoeud
       // 
-      this.buttonInsertionNoeud.Location = new System.Drawing.Point(690, 353);
+      this.buttonInsertionNoeud.Location = new System.Drawing.Point(691, 353);
+      this.buttonInsertionNoeud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonInsertionNoeud.Name = "buttonInsertionNoeud";
-      this.buttonInsertionNoeud.Size = new System.Drawing.Size(194, 43);
+      this.buttonInsertionNoeud.Size = new System.Drawing.Size(195, 43);
       this.buttonInsertionNoeud.TabIndex = 12;
       this.buttonInsertionNoeud.Text = "Insère noeud avec données ci-dessus";
       this.buttonInsertionNoeud.UseVisualStyleBackColor = true;
@@ -162,18 +178,51 @@ namespace TreevIEW
       // buttonSuppressionNoeud
       // 
       this.buttonSuppressionNoeud.Location = new System.Drawing.Point(681, 111);
+      this.buttonSuppressionNoeud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonSuppressionNoeud.Name = "buttonSuppressionNoeud";
-      this.buttonSuppressionNoeud.Size = new System.Drawing.Size(194, 23);
+      this.buttonSuppressionNoeud.Size = new System.Drawing.Size(195, 23);
       this.buttonSuppressionNoeud.TabIndex = 13;
       this.buttonSuppressionNoeud.Text = "Supprine noeud courant";
       this.buttonSuppressionNoeud.UseVisualStyleBackColor = true;
       this.buttonSuppressionNoeud.Click += new System.EventHandler(this.buttonSuppressionNoeud_Click);
       // 
+      // contextMenuStrip1
+      // 
+      this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+      this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.supprimerLeNoeudToolStripMenuItem,
+            this.insérerUnNoeudToolStripMenuItem,
+            this.renimmerLeNoeudToolStripMenuItem});
+      this.contextMenuStrip1.Name = "contextMenuStrip1";
+      this.contextMenuStrip1.Size = new System.Drawing.Size(214, 104);
+      this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+      this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
+      this.contextMenuStrip1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.contextMenuStrip1_MouseClick);
+      // 
+      // supprimerLeNoeudToolStripMenuItem
+      // 
+      this.supprimerLeNoeudToolStripMenuItem.Name = "supprimerLeNoeudToolStripMenuItem";
+      this.supprimerLeNoeudToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+      this.supprimerLeNoeudToolStripMenuItem.Text = "Supprimer le noeud";
+      // 
+      // insérerUnNoeudToolStripMenuItem
+      // 
+      this.insérerUnNoeudToolStripMenuItem.Name = "insérerUnNoeudToolStripMenuItem";
+      this.insérerUnNoeudToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+      this.insérerUnNoeudToolStripMenuItem.Text = "Insérer un noeud";
+      // 
+      // renimmerLeNoeudToolStripMenuItem
+      // 
+      this.renimmerLeNoeudToolStripMenuItem.Name = "renimmerLeNoeudToolStripMenuItem";
+      this.renimmerLeNoeudToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+      this.renimmerLeNoeudToolStripMenuItem.Text = "Renommer le noeud";
+      this.renimmerLeNoeudToolStripMenuItem.Click += new System.EventHandler(this.renimmerLeNoeudToolStripMenuItem_Click);
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(992, 472);
+      this.ClientSize = new System.Drawing.Size(992, 473);
       this.Controls.Add(this.buttonSuppressionNoeud);
       this.Controls.Add(this.buttonInsertionNoeud);
       this.Controls.Add(this.textBoxDesignation);
@@ -188,9 +237,13 @@ namespace TreevIEW
       this.Controls.Add(this.button1);
       this.Controls.Add(this.textBox1);
       this.Controls.Add(this.treeView1);
+      this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.Name = "Form1";
       this.Text = "Form1";
       this.Load += new System.EventHandler(this.Form1_Load);
+      this.ContextMenuStripChanged += new System.EventHandler(this.Form1_ContextMenuStripChanged);
+      this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+      this.contextMenuStrip1.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -212,6 +265,10 @@ namespace TreevIEW
     private System.Windows.Forms.TextBox textBoxDesignation;
     private System.Windows.Forms.Button buttonInsertionNoeud;
     private System.Windows.Forms.Button buttonSuppressionNoeud;
+    private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+    private System.Windows.Forms.ToolStripMenuItem supprimerLeNoeudToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem insérerUnNoeudToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem renimmerLeNoeudToolStripMenuItem;
   }
 }
 

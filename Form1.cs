@@ -20,7 +20,7 @@ namespace TreevIEW
     }
 
     private void Form1_Load(object sender, EventArgs e)
-    {
+    {      
       // Add parent node
       TreeNode noeud = treeView1.Nodes.Add("Automobile");
 
@@ -41,9 +41,9 @@ namespace TreevIEW
       treeView1.SelectedNode.Nodes.Add(" M112", "Coussinet");
       treeView1.ExpandAll();
 
-      if (treeView1.Nodes.Find("M1", true)[0]!=null)
+      if (treeView1.Nodes.Find("M1", true)[0] != null)
       {
-        MessageBox.Show(treeView1.Nodes.Find("M1", true)[0].Text);
+       // MessageBox.Show(treeView1.Nodes.Find("M1", true)[0].Text);
       }
     }
 
@@ -97,6 +97,55 @@ namespace TreevIEW
     private void buttonSuppressionNoeud_Click(object sender, EventArgs e)
     {
       treeView1.SelectedNode.Remove();
+    }
+
+    private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+    {
+
+    }
+
+    private void Form1_MouseClick(object sender, MouseEventArgs e)
+    {
+      contextMenuStrip1.Show();
+    }
+
+    private void contextMenuStrip1_MouseClick(object sender, MouseEventArgs e)
+    {
+
+    }
+
+    private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    {
+
+    }
+
+    private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+    {
+      if (e.Button == System.Windows.Forms.MouseButtons.Right)
+      {
+        contextMenuStrip1.Show();
+      }
+
+    }
+
+    private void Form1_ContextMenuStripChanged(object sender, EventArgs e)
+    {
+      
+    }
+
+    private void renimmerLeNoeudToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      ronmeNooeud();
+    }
+
+    private void ronmeNooeud ()
+    {
+      treeView1.SelectedNode.Text = textBox1.Text;
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+      ronmeNooeud();
     }
   }
 }
