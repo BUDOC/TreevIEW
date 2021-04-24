@@ -23,16 +23,28 @@ namespace TreevIEW
     {
       // Add parent node
       TreeNode noeud = treeView1.Nodes.Add("Automobile");
+
       // Add child node
       TreeNode Fils = noeud.Nodes.Add("Boite de vitesses");
       Fils.Nodes.Add("1", "Arbre primaire").Nodes.Add("2", "Sychro 1ERE");
       TreeNode Fils2 = noeud.Nodes.Add("Moteur");
       Fils2.Nodes.Add(key: "M1", text: "Vilebrequin");
+
+      // ajoute un noeud enfant sur un neode recherché
+      treeView1.Nodes.Find("M1", true)[0].Nodes.Add("22", "pignon chaine distri");
+      //============
+
       Fils2.Nodes.Add(key: "M2", text: "Bielle");
+
       // treeView1.Nodes.Find("M1", true)[0].Remove();
       treeView1.SelectedNode = treeView1.Nodes.Find(key: "M1", true)[0];
       treeView1.SelectedNode.Nodes.Add(" M112", "Coussinet");
       treeView1.ExpandAll();
+
+      if (treeView1.Nodes.Find("M1", true)[0]!=null)
+      {
+        MessageBox.Show(treeView1.Nodes.Find("M1", true)[0].Text);
+      }
     }
 
     /// <summary>
