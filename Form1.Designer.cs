@@ -36,6 +36,7 @@ namespace TreeView
             this.insérerUnNoeudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renimmerLeNoeudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propriétésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.afficheLeParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btChangeNodeName = new System.Windows.Forms.Button();
             this.treeView2 = new System.Windows.Forms.TreeView();
@@ -49,7 +50,8 @@ namespace TreeView
             this.textBoxDesignation = new System.Windows.Forms.TextBox();
             this.buttonInsertionNoeud = new System.Windows.Forms.Button();
             this.buttonSuppressionNoeud = new System.Windows.Forms.Button();
-            this.afficheLeParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.afficheEnfantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btSeeTree = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,9 +74,10 @@ namespace TreeView
             this.insérerUnNoeudToolStripMenuItem,
             this.renimmerLeNoeudToolStripMenuItem,
             this.propriétésToolStripMenuItem,
-            this.afficheLeParentToolStripMenuItem});
+            this.afficheLeParentToolStripMenuItem,
+            this.afficheEnfantsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 124);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 148);
             // 
             // supprimerLeNoeudToolStripMenuItem
             // 
@@ -103,6 +106,13 @@ namespace TreeView
             this.propriétésToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
             this.propriétésToolStripMenuItem.Text = "Propriétés";
             this.propriétésToolStripMenuItem.Click += new System.EventHandler(this.propriétésToolStripMenuItem_Click);
+            // 
+            // afficheLeParentToolStripMenuItem
+            // 
+            this.afficheLeParentToolStripMenuItem.Name = "afficheLeParentToolStripMenuItem";
+            this.afficheLeParentToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.afficheLeParentToolStripMenuItem.Text = "Affiche le parent";
+            this.afficheLeParentToolStripMenuItem.Click += new System.EventHandler(this.afficheLeParentToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -240,18 +250,29 @@ namespace TreeView
             this.buttonSuppressionNoeud.UseVisualStyleBackColor = true;
             this.buttonSuppressionNoeud.Click += new System.EventHandler(this.buttonSuppressionNoeud_Click);
             // 
-            // afficheLeParentToolStripMenuItem
+            // afficheEnfantsToolStripMenuItem
             // 
-            this.afficheLeParentToolStripMenuItem.Name = "afficheLeParentToolStripMenuItem";
-            this.afficheLeParentToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
-            this.afficheLeParentToolStripMenuItem.Text = "Affiche le parent";
-            this.afficheLeParentToolStripMenuItem.Click += new System.EventHandler(this.afficheLeParentToolStripMenuItem_Click);
+            this.afficheEnfantsToolStripMenuItem.Name = "afficheEnfantsToolStripMenuItem";
+            this.afficheEnfantsToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.afficheEnfantsToolStripMenuItem.Text = "Affiche enfants";
+            this.afficheEnfantsToolStripMenuItem.Click += new System.EventHandler(this.afficheEnfantsToolStripMenuItem_Click);
+            // 
+            // btSeeTree
+            // 
+            this.btSeeTree.Location = new System.Drawing.Point(691, 413);
+            this.btSeeTree.Name = "btSeeTree";
+            this.btSeeTree.Size = new System.Drawing.Size(194, 30);
+            this.btSeeTree.TabIndex = 14;
+            this.btSeeTree.Text = "Affiche l\'arbre";
+            this.btSeeTree.UseVisualStyleBackColor = true;
+            this.btSeeTree.Click += new System.EventHandler(this.btSeeTree_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 473);
+            this.Controls.Add(this.btSeeTree);
             this.Controls.Add(this.buttonSuppressionNoeud);
             this.Controls.Add(this.buttonInsertionNoeud);
             this.Controls.Add(this.textBoxDesignation);
@@ -299,6 +320,8 @@ namespace TreeView
     private System.Windows.Forms.ToolStripMenuItem renimmerLeNoeudToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propriétésToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem afficheLeParentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem afficheEnfantsToolStripMenuItem;
+        private System.Windows.Forms.Button btSeeTree;
     }
 }
 

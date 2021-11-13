@@ -101,7 +101,7 @@ namespace TreeView
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-          //  contextMenuStrip1.Show();
+            //  contextMenuStrip1.Show();
         }
 
 
@@ -143,14 +143,14 @@ namespace TreeView
 
             if (e.Node.Parent != null && e.Node.Parent.GetType() == typeof(TreeNode))
             {
-                this.Text ="Le Noeud "                 + treeView1.SelectedNode.Name 
-                    + "\n dont le contenu est "             + treeView1.SelectedNode.Text
-                    + "\n possède un parent nommé :"        + e.Node.Parent.Name
-                    + "\n dont le contenu est "             + e.Node.Parent.Text;
+                this.Text = "Le Noeud " + treeView1.SelectedNode.Name
+                    + "\n dont le contenu est " + treeView1.SelectedNode.Text
+                    + "\n possède un parent nommé :" + e.Node.Parent.Name
+                    + "\n dont le contenu est " + e.Node.Parent.Text;
             }
             else
             {
-                this.Text="Le Noeud " + treeView1.SelectedNode.Name + " n'a pas de parent.";
+                this.Text = "Le Noeud " + treeView1.SelectedNode.Name + " n'a pas de parent.";
             }
         }
 
@@ -170,13 +170,14 @@ namespace TreeView
                 + treeView1.SelectedNode.Text + "\n Coché : " + treeView1.SelectedNode.Checked.ToString());
 
         }
-       
+
         public void GetChildren(List<TreeNode> Nodes, TreeNode Node)
         {
             foreach (TreeNode thisNode in Node.Nodes)
             {
                 Nodes.Add(thisNode);
-             //   GetChildren(Nodes, thisNode);
+                //   GetChildren(Nodes, thisNode);
+                MessageBox.Show(Nodes.ToString());
             }
         }
 
@@ -188,14 +189,60 @@ namespace TreeView
                 string Text = "Le Noeud " + treeView1.SelectedNode.Name
                     + "\n dont le contenu est " + treeView1.SelectedNode.Text
                     + "\n possède un parent nommé :" + tn.Parent.Name
-                    + "\n dont le contenu est " + tn.Parent.Text;            
-           }
+                    + "\n dont le contenu est " + tn.Parent.Text;
+            }
             else
             {
                 Text = "pas de parent!";
 
             }
             MessageBox.Show(Text);
+        }
+
+
+        private void AfficheEnfants()
+        {
+            string textAffiche = string.Empty;
+            TreeNodeCollection nodes = treeView1.SelectedNode.Nodes;
+            foreach (TreeNode N in nodes)
+            {
+                //  MessageBox.Show(N.Text);
+                textAffiche += N.Text + "  ";
+            }
+            MessageBox.Show(textAffiche);
+        }
+
+
+        private void afficheEnfantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AfficheEnfants();
+        }
+
+        string treeAffiche = string.Empty;
+        private void AfficheAbre(TreeNode workingNode)
+        {
+            foreach (TreeNode tn in workingNode.Nodes)
+            {
+                treeAffiche += tn.Text + "\n";
+                AfficheAbre(tn);
+            }
+        }
+
+        private TreeNode FindRootNode(TreeNode treeNode)
+        {
+            while (treeNode.Parent != null)
+            {
+                treeNode = treeNode.Parent;
+            }
+            return treeNode;
+        }
+
+        private void btSeeTree_Click(object sender, EventArgs e)
+        {
+            TreeNode racine = FindRootNode(treeView1.SelectedNode);
+            treeAffiche = " La Racinne est " + racine.Text + "\n\n";
+            AfficheAbre(racine);
+            MessageBox.Show(treeAffiche);
         }
     }
 }
