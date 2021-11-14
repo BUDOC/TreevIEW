@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace TreeView
 {
@@ -242,7 +243,20 @@ namespace TreeView
             TreeNode racine = FindRootNode(treeView1.SelectedNode);
             treeAffiche = " La Racinne est " + racine.Text + "\n\n";
             AfficheAbre(racine);
-            MessageBox.Show(treeAffiche);
+            MessageBox.Show(treeAffiche);           
+        }
+
+        private void trouveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          if (  treeView1.Nodes.Find("M1", true)== null)
+            {
+                MessageBox.Show("M1 noeud trouvé");               
+            }
+          else
+            {
+                MessageBox.Show("M1 trouvé \n" + treeView1.Nodes.Find("M1", true).First());
+            }
+
         }
     }
 }
