@@ -38,6 +38,7 @@ namespace TreeView
             this.propriétésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afficheLeParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afficheEnfantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trouveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btChangeNodeName = new System.Windows.Forms.Button();
             this.treeView2 = new System.Windows.Forms.TreeView();
@@ -52,7 +53,9 @@ namespace TreeView
             this.buttonInsertionNoeud = new System.Windows.Forms.Button();
             this.buttonSuppressionNoeud = new System.Windows.Forms.Button();
             this.btSeeTree = new System.Windows.Forms.Button();
-            this.trouveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbCle = new System.Windows.Forms.TextBox();
+            this.LabCleDERecherche = new System.Windows.Forms.Label();
+            this.trouveNoeudContenantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,56 +80,65 @@ namespace TreeView
             this.propriétésToolStripMenuItem,
             this.afficheLeParentToolStripMenuItem,
             this.afficheEnfantsToolStripMenuItem,
-            this.trouveToolStripMenuItem});
+            this.trouveToolStripMenuItem,
+            this.trouveNoeudContenantToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 200);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(246, 196);
             // 
             // supprimerLeNoeudToolStripMenuItem
             // 
             this.supprimerLeNoeudToolStripMenuItem.Name = "supprimerLeNoeudToolStripMenuItem";
-            this.supprimerLeNoeudToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.supprimerLeNoeudToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.supprimerLeNoeudToolStripMenuItem.Text = "Supprimer le noeud";
             this.supprimerLeNoeudToolStripMenuItem.Click += new System.EventHandler(this.supprimerLeNoeudToolStripMenuItem_Click);
             // 
             // insérerUnNoeudToolStripMenuItem
             // 
             this.insérerUnNoeudToolStripMenuItem.Name = "insérerUnNoeudToolStripMenuItem";
-            this.insérerUnNoeudToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.insérerUnNoeudToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.insérerUnNoeudToolStripMenuItem.Text = "Insérer un noeud";
             this.insérerUnNoeudToolStripMenuItem.Click += new System.EventHandler(this.insérerUnNoeudToolStripMenuItem_Click);
             // 
             // renimmerLeNoeudToolStripMenuItem
             // 
             this.renimmerLeNoeudToolStripMenuItem.Name = "renimmerLeNoeudToolStripMenuItem";
-            this.renimmerLeNoeudToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.renimmerLeNoeudToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.renimmerLeNoeudToolStripMenuItem.Text = "Renommer le noeud";
             this.renimmerLeNoeudToolStripMenuItem.Click += new System.EventHandler(this.RenemmerLeNoeudToolStripMenuItem_Click);
             // 
             // propriétésToolStripMenuItem
             // 
             this.propriétésToolStripMenuItem.Name = "propriétésToolStripMenuItem";
-            this.propriétésToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.propriétésToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.propriétésToolStripMenuItem.Text = "Propriétés";
             this.propriétésToolStripMenuItem.Click += new System.EventHandler(this.propriétésToolStripMenuItem_Click);
             // 
             // afficheLeParentToolStripMenuItem
             // 
             this.afficheLeParentToolStripMenuItem.Name = "afficheLeParentToolStripMenuItem";
-            this.afficheLeParentToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.afficheLeParentToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.afficheLeParentToolStripMenuItem.Text = "Affiche le parent";
             this.afficheLeParentToolStripMenuItem.Click += new System.EventHandler(this.afficheLeParentToolStripMenuItem_Click);
             // 
             // afficheEnfantsToolStripMenuItem
             // 
             this.afficheEnfantsToolStripMenuItem.Name = "afficheEnfantsToolStripMenuItem";
-            this.afficheEnfantsToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.afficheEnfantsToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.afficheEnfantsToolStripMenuItem.Text = "Affiche enfants";
             this.afficheEnfantsToolStripMenuItem.Click += new System.EventHandler(this.afficheEnfantsToolStripMenuItem_Click);
+            // 
+            // trouveToolStripMenuItem
+            // 
+            this.trouveToolStripMenuItem.Name = "trouveToolStripMenuItem";
+            this.trouveToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.trouveToolStripMenuItem.Text = "Trouve Noeud par Clé ";
+            this.trouveToolStripMenuItem.Click += new System.EventHandler(this.trouveToolStripMenuItem_Click);
+            this.trouveToolStripMenuItem.MouseHover += new System.EventHandler(this.trouveToolStripMenuItem_MouseHover);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(681, 42);
+            this.textBox1.Location = new System.Drawing.Point(683, 57);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(193, 22);
@@ -160,9 +172,9 @@ namespace TreeView
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(29, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 17);
+            this.label1.Size = new System.Drawing.Size(203, 17);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Treeview1";
+            this.label1.Text = "Treeview1 Clic droit pour menu";
             // 
             // label2
             // 
@@ -198,7 +210,7 @@ namespace TreeView
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(687, 254);
+            this.label3.Location = new System.Drawing.Point(687, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 17);
             this.label3.TabIndex = 8;
@@ -207,7 +219,7 @@ namespace TreeView
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(687, 305);
+            this.label4.Location = new System.Drawing.Point(687, 275);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 17);
             this.label4.TabIndex = 9;
@@ -216,7 +228,7 @@ namespace TreeView
             // textBoxCle
             // 
             this.textBoxCle.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxCle.Location = new System.Drawing.Point(691, 274);
+            this.textBoxCle.Location = new System.Drawing.Point(691, 251);
             this.textBoxCle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCle.Name = "textBoxCle";
             this.textBoxCle.Size = new System.Drawing.Size(193, 22);
@@ -226,7 +238,7 @@ namespace TreeView
             // textBoxDesignation
             // 
             this.textBoxDesignation.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxDesignation.Location = new System.Drawing.Point(691, 325);
+            this.textBoxDesignation.Location = new System.Drawing.Point(691, 295);
             this.textBoxDesignation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxDesignation.Name = "textBoxDesignation";
             this.textBoxDesignation.Size = new System.Drawing.Size(193, 22);
@@ -237,10 +249,10 @@ namespace TreeView
             // 
             this.buttonInsertionNoeud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonInsertionNoeud.ForeColor = System.Drawing.Color.Green;
-            this.buttonInsertionNoeud.Location = new System.Drawing.Point(691, 353);
+            this.buttonInsertionNoeud.Location = new System.Drawing.Point(610, 321);
             this.buttonInsertionNoeud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonInsertionNoeud.Name = "buttonInsertionNoeud";
-            this.buttonInsertionNoeud.Size = new System.Drawing.Size(195, 43);
+            this.buttonInsertionNoeud.Size = new System.Drawing.Size(353, 36);
             this.buttonInsertionNoeud.TabIndex = 12;
             this.buttonInsertionNoeud.Text = "Insère noeud avec données ci-dessus";
             this.buttonInsertionNoeud.UseVisualStyleBackColor = true;
@@ -261,7 +273,7 @@ namespace TreeView
             // 
             // btSeeTree
             // 
-            this.btSeeTree.Location = new System.Drawing.Point(691, 413);
+            this.btSeeTree.Location = new System.Drawing.Point(683, 9);
             this.btSeeTree.Name = "btSeeTree";
             this.btSeeTree.Size = new System.Drawing.Size(194, 30);
             this.btSeeTree.TabIndex = 14;
@@ -269,18 +281,38 @@ namespace TreeView
             this.btSeeTree.UseVisualStyleBackColor = true;
             this.btSeeTree.Click += new System.EventHandler(this.btSeeTree_Click);
             // 
-            // trouveToolStripMenuItem
+            // tbCle
             // 
-            this.trouveToolStripMenuItem.Name = "trouveToolStripMenuItem";
-            this.trouveToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
-            this.trouveToolStripMenuItem.Text = "Trouve";
-            this.trouveToolStripMenuItem.Click += new System.EventHandler(this.trouveToolStripMenuItem_Click);
+            this.tbCle.Location = new System.Drawing.Point(691, 395);
+            this.tbCle.Name = "tbCle";
+            this.tbCle.Size = new System.Drawing.Size(173, 22);
+            this.tbCle.TabIndex = 15;
+            this.tbCle.Text = "M1";
+            // 
+            // LabCleDERecherche
+            // 
+            this.LabCleDERecherche.AutoSize = true;
+            this.LabCleDERecherche.Location = new System.Drawing.Point(691, 378);
+            this.LabCleDERecherche.Name = "LabCleDERecherche";
+            this.LabCleDERecherche.Size = new System.Drawing.Size(166, 17);
+            this.LabCleDERecherche.TabIndex = 16;
+            this.LabCleDERecherche.Text = "Paramètre  de recherche";
+            // 
+            // trouveNoeudContenantToolStripMenuItem
+            // 
+            this.trouveNoeudContenantToolStripMenuItem.Name = "trouveNoeudContenantToolStripMenuItem";
+            this.trouveNoeudContenantToolStripMenuItem.Size = new System.Drawing.Size(245, 24);
+            this.trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant ";
+            this.trouveNoeudContenantToolStripMenuItem.Click += new System.EventHandler(this.trouveNoeudContenantToolStripMenuItem_Click);
+            this.trouveNoeudContenantToolStripMenuItem.MouseHover += new System.EventHandler(this.trouveNoeudContenantToolStripMenuItem_MouseHover);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 473);
+            this.Controls.Add(this.LabCleDERecherche);
+            this.Controls.Add(this.tbCle);
             this.Controls.Add(this.btSeeTree);
             this.Controls.Add(this.buttonSuppressionNoeud);
             this.Controls.Add(this.buttonInsertionNoeud);
@@ -332,6 +364,9 @@ namespace TreeView
         private System.Windows.Forms.ToolStripMenuItem afficheEnfantsToolStripMenuItem;
         private System.Windows.Forms.Button btSeeTree;
         private System.Windows.Forms.ToolStripMenuItem trouveToolStripMenuItem;
+        private System.Windows.Forms.TextBox tbCle;
+        private System.Windows.Forms.Label LabCleDERecherche;
+        private System.Windows.Forms.ToolStripMenuItem trouveNoeudContenantToolStripMenuItem;
     }
 }
 

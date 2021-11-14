@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -243,20 +244,71 @@ namespace TreeView
             TreeNode racine = FindRootNode(treeView1.SelectedNode);
             treeAffiche = " La Racinne est " + racine.Text + "\n\n";
             AfficheAbre(racine);
-            MessageBox.Show(treeAffiche);           
+            MessageBox.Show(treeAffiche);
         }
 
         private void trouveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          if (  treeView1.Nodes.Find("M1", true)== null)
-            {
-                MessageBox.Show("M1 noeud trouvé");               
-            }
-          else
-            {
-                MessageBox.Show("M1 trouvé \n" + treeView1.Nodes.Find("M1", true).First());
-            }
+            string toSearch = this.tbCle.Text;
+            SearchNodeByKeyRecursivly(treeView1.Nodes, toSearch);
+            treeView1.Refresh();
+        }
 
+        private void trouveToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            trouveToolStripMenuItem.Text = "Trouve Noeud de clé " + tbCle.Text;
+        }
+
+        private bool SearchNodeByKeyRecursivly(IEnumerable nodes, string searchFor)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Name == searchFor)
+                {
+                    treeView1.SelectedNode = node;
+                    node.BackColor = Color.Yellow;
+                    treeView1.Refresh();
+                }
+                else
+                {
+                    node.BackColor = Color.White;
+                }
+                if (SearchNodeByKeyRecursivly(node.Nodes, searchFor))
+                    return true;
+            }
+            return false;
+        }
+
+        private bool SearchNodeByValueRecursivly(IEnumerable nodes, string searchFor)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Text == searchFor)
+                {
+                    treeView1.SelectedNode = node;
+                    node.BackColor = Color.Aqua;
+                    treeView1.Refresh();
+                }
+                else
+                {
+                    node.BackColor = Color.White;
+                }
+                if (SearchNodeByValueRecursivly(node.Nodes, searchFor))
+                    return true;
+            }
+            return false;
+        }
+
+        private void trouveNoeudContenantToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+           trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant  " + tbCle.Text;
+        }
+
+        private void trouveNoeudContenantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string toSearch = this.tbCle.Text;
+            SearchNodeByValueRecursivly(treeView1.Nodes, toSearch);
+            treeView1.Refresh();
         }
     }
 }
