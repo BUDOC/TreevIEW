@@ -315,16 +315,7 @@ namespace TreeView
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // bt_NewWindow
-            // 
-            this.bt_NewWindow.Location = new System.Drawing.Point(837, 424);
-            this.bt_NewWindow.Name = "bt_NewWindow";
-            this.bt_NewWindow.Size = new System.Drawing.Size(126, 37);
-            this.bt_NewWindow.TabIndex = 17;
-            this.bt_NewWindow.Text = "NewWindow";
-            this.bt_NewWindow.UseVisualStyleBackColor = true;
-            this.bt_NewWindow.Click += new System.EventHandler(this.bt_NewWindow_Click);
-            // 
+          
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);

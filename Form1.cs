@@ -16,6 +16,8 @@ namespace TreeView
 {
     public partial class Form1 : Form
     {
+        string treeAffiche = string.Empty;
+
         public Form1()
         {
             InitializeComponent();
@@ -105,7 +107,6 @@ namespace TreeView
         {
             treeView1.SelectedNode.Remove();
         }
-
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -201,7 +202,6 @@ namespace TreeView
             MessageBox.Show(Text);
         }
 
-
         private void AfficheEnfants()
         {
             string textAffiche = string.Empty;
@@ -214,13 +214,11 @@ namespace TreeView
             MessageBox.Show(textAffiche);
         }
 
-
         private void afficheEnfantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AfficheEnfants();
         }
 
-        string treeAffiche = string.Empty;
         private void AfficheAbre(TreeNode workingNode)
         {
             foreach (TreeNode tn in workingNode.Nodes)
@@ -309,61 +307,6 @@ namespace TreeView
             string toSearch = this.tbCle.Text;
             SearchNodeByValueRecursivly(treeView1.Nodes, toSearch);
             treeView1.Refresh();
-        }
-
-              
-
-        string DialogSaisie(string layus)
-        {
-            Form Form3 = new Form();
-            TextBox txt = new TextBox();
-            Label labSaisie = new Label();
-            Button btOk = new Button();
-
-            // parametrage fenetre
-            Form3.Text = " Saisie d'une valeur.";
-            Form3.Width = 350;
-            Form3.Height = 100;
-            Form3.BackColor = Color.AliceBlue;
-
-            // parametrage textBox
-            txt.Name = "";
-            txt.Text = "";
-            txt.Left = 10;
-            txt.Top = 25;
-            txt.Width = 150;
-
-            //parametrage label
-            labSaisie.Width = 120;
-            labSaisie.Height = 25;
-            labSaisie.Top = 10;
-            labSaisie.Left = 10;
-            labSaisie.Text = layus;
-
-            btOk.Text = "OK";
-            btOk.Width = 55;
-            btOk.Height = 25;
-            btOk.Left = 100;
-            btOk.Top = 45;
-            btOk.ForeColor = Color.Blue;
-
-
-            // Creation des controles
-            Form3.Controls.Add(txt);
-            Form3.Controls.Add(labSaisie);
-            Form3.Controls.Add(btOk);
-
-            // affichage de la fenetre
-            btOk.Visible = false;
-            Form3.ShowDialog();
-
-            return Form3.Controls[0].Text;           
-        }
-
-
-        private void bt_NewWindow_Click(object sender, EventArgs e)
-        {           
-            this.Text =DialogSaisie("test de saisie");
         }
     }
 }
