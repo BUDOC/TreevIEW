@@ -23,6 +23,11 @@ namespace TreeView
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            InitializeTree();
+
+        }
+        private void InitializeTree()
+        {
             // Add parent node
             TreeNode noeud = treeView1.Nodes.Add("Automobile");
 
@@ -99,11 +104,6 @@ namespace TreeView
         private void buttonSuppressionNoeud_Click(object sender, EventArgs e)
         {
             treeView1.SelectedNode.Remove();
-        }
-
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-            //  contextMenuStrip1.Show();
         }
 
 
@@ -301,7 +301,7 @@ namespace TreeView
 
         private void trouveNoeudContenantToolStripMenuItem_MouseHover(object sender, EventArgs e)
         {
-           trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant  " + tbCle.Text;
+            trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant  " + tbCle.Text;
         }
 
         private void trouveNoeudContenantToolStripMenuItem_Click(object sender, EventArgs e)
@@ -309,6 +309,61 @@ namespace TreeView
             string toSearch = this.tbCle.Text;
             SearchNodeByValueRecursivly(treeView1.Nodes, toSearch);
             treeView1.Refresh();
+        }
+
+              
+
+        string DialogSaisie(string layus)
+        {
+            Form Form3 = new Form();
+            TextBox txt = new TextBox();
+            Label labSaisie = new Label();
+            Button btOk = new Button();
+
+            // parametrage fenetre
+            Form3.Text = " Saisie d'une valeur.";
+            Form3.Width = 350;
+            Form3.Height = 100;
+            Form3.BackColor = Color.AliceBlue;
+
+            // parametrage textBox
+            txt.Name = "";
+            txt.Text = "";
+            txt.Left = 10;
+            txt.Top = 25;
+            txt.Width = 150;
+
+            //parametrage label
+            labSaisie.Width = 120;
+            labSaisie.Height = 25;
+            labSaisie.Top = 10;
+            labSaisie.Left = 10;
+            labSaisie.Text = layus;
+
+            btOk.Text = "OK";
+            btOk.Width = 55;
+            btOk.Height = 25;
+            btOk.Left = 100;
+            btOk.Top = 45;
+            btOk.ForeColor = Color.Blue;
+
+
+            // Creation des controles
+            Form3.Controls.Add(txt);
+            Form3.Controls.Add(labSaisie);
+            Form3.Controls.Add(btOk);
+
+            // affichage de la fenetre
+            btOk.Visible = false;
+            Form3.ShowDialog();
+
+            return Form3.Controls[0].Text;           
+        }
+
+
+        private void bt_NewWindow_Click(object sender, EventArgs e)
+        {           
+            this.Text =DialogSaisie("test de saisie");
         }
     }
 }
