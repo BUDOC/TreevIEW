@@ -10,6 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TreevIEW;
 using static System.Windows.Forms.DataFormats;
 
 namespace TreeView
@@ -118,25 +119,19 @@ namespace TreeView
 
         private void RenemmerLeNoeudToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RenommeNoeud();
+           
+            ForDataDialog F2 = new ForDataDialog("Renomme Noeud", "Nouveau nom");
+            F2.ShowDialog();
+            treeView1.SelectedNode.Text = F2.data;
+          
+            
         }
 
-        private void RenommeNoeud()
-        {
-            this.textBox1.BackColor = Color.Coral;
-            string message = "Voulez vous changer en :" + this.textBox1.Text + " ?";
-            string caption = "Changement de désignation";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-            result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            { treeView1.SelectedNode.Text = textBox1.Text; }
-            this.textBox1.BackColor = Color.White;
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RenommeNoeud();
+          //  RenommeNoeud();
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -247,7 +242,9 @@ namespace TreeView
 
         private void trouveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string toSearch = this.tbCle.Text;
+            ForDataDialog F2 = new ForDataDialog("Recherche par clé", "Clé");
+            F2.ShowDialog();
+            string toSearch = F2.data;// this.tbCle.Text;
             SearchNodeByKeyRecursivly(treeView1.Nodes, toSearch);
             treeView1.Refresh();
         }

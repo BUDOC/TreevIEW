@@ -41,8 +41,6 @@ namespace TreeView
             this.afficheEnfantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trouveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trouveNoeudContenantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btChangeNodeName = new System.Windows.Forms.Button();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +51,6 @@ namespace TreeView
             this.textBoxCle = new System.Windows.Forms.TextBox();
             this.textBoxDesignation = new System.Windows.Forms.TextBox();
             this.buttonInsertionNoeud = new System.Windows.Forms.Button();
-            this.buttonSuppressionNoeud = new System.Windows.Forms.Button();
             this.btSeeTree = new System.Windows.Forms.Button();
             this.tbCle = new System.Windows.Forms.TextBox();
             this.LabCleDERecherche = new System.Windows.Forms.Label();
@@ -145,29 +142,6 @@ namespace TreeView
             this.trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant ";
             this.trouveNoeudContenantToolStripMenuItem.Click += new System.EventHandler(this.trouveNoeudContenantToolStripMenuItem_Click);
             this.trouveNoeudContenantToolStripMenuItem.MouseHover += new System.EventHandler(this.trouveNoeudContenantToolStripMenuItem_MouseHover);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(683, 57);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 22);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Nouveau nom";
-            // 
-            // btChangeNodeName
-            // 
-            this.btChangeNodeName.BackColor = System.Drawing.Color.AliceBlue;
-            this.btChangeNodeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btChangeNodeName.Location = new System.Drawing.Point(681, 83);
-            this.btChangeNodeName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btChangeNodeName.Name = "btChangeNodeName";
-            this.btChangeNodeName.Size = new System.Drawing.Size(195, 62);
-            this.btChangeNodeName.TabIndex = 2;
-            this.btChangeNodeName.Text = "Renomme avec le contenu du dessus";
-            this.btChangeNodeName.UseVisualStyleBackColor = false;
-            this.btChangeNodeName.Click += new System.EventHandler(this.button1_Click);
             // 
             // treeView2
             // 
@@ -269,19 +243,6 @@ namespace TreeView
             this.buttonInsertionNoeud.UseVisualStyleBackColor = true;
             this.buttonInsertionNoeud.Click += new System.EventHandler(this.button4_Click);
             // 
-            // buttonSuppressionNoeud
-            // 
-            this.buttonSuppressionNoeud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSuppressionNoeud.ForeColor = System.Drawing.Color.Red;
-            this.buttonSuppressionNoeud.Location = new System.Drawing.Point(689, 169);
-            this.buttonSuppressionNoeud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonSuppressionNoeud.Name = "buttonSuppressionNoeud";
-            this.buttonSuppressionNoeud.Size = new System.Drawing.Size(195, 40);
-            this.buttonSuppressionNoeud.TabIndex = 13;
-            this.buttonSuppressionNoeud.Text = "Supprine noeud courant";
-            this.buttonSuppressionNoeud.UseVisualStyleBackColor = true;
-            this.buttonSuppressionNoeud.Click += new System.EventHandler(this.buttonSuppressionNoeud_Click);
-            // 
             // btSeeTree
             // 
             this.btSeeTree.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
@@ -315,7 +276,13 @@ namespace TreeView
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-          
+            // bt_NewWindow
+            // 
+            this.bt_NewWindow.Location = new System.Drawing.Point(0, 0);
+            this.bt_NewWindow.Name = "bt_NewWindow";
+            this.bt_NewWindow.Size = new System.Drawing.Size(75, 23);
+            this.bt_NewWindow.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -325,7 +292,6 @@ namespace TreeView
             this.Controls.Add(this.LabCleDERecherche);
             this.Controls.Add(this.tbCle);
             this.Controls.Add(this.btSeeTree);
-            this.Controls.Add(this.buttonSuppressionNoeud);
             this.Controls.Add(this.buttonInsertionNoeud);
             this.Controls.Add(this.textBoxDesignation);
             this.Controls.Add(this.textBoxCle);
@@ -336,8 +302,6 @@ namespace TreeView
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.treeView2);
-            this.Controls.Add(this.btChangeNodeName);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.treeView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -353,8 +317,6 @@ namespace TreeView
     #endregion
 
     private System.Windows.Forms.TreeView treeView1;
-    private System.Windows.Forms.TextBox textBox1;
-    private System.Windows.Forms.Button btChangeNodeName;
     private System.Windows.Forms.TreeView treeView2;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
@@ -365,7 +327,6 @@ namespace TreeView
     private System.Windows.Forms.TextBox textBoxCle;
     private System.Windows.Forms.TextBox textBoxDesignation;
     private System.Windows.Forms.Button buttonInsertionNoeud;
-    private System.Windows.Forms.Button buttonSuppressionNoeud;
     private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     private System.Windows.Forms.ToolStripMenuItem supprimerLeNoeudToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem insérerUnNoeudToolStripMenuItem;
