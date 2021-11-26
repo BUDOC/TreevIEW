@@ -322,7 +322,7 @@ namespace TreeView
             {
                 string treeFilename = saveFileDialog1.FileName;
             };
-            
+
             using (Stream file = File.Open(saveFileDialog1.FileName, FileMode.Create))
             {
                 BinaryFormatter bf = new BinaryFormatter();
@@ -330,6 +330,23 @@ namespace TreeView
                 this.LabelStatus.Text = "Fichier " + saveFileDialog1.FileName + " enregistré.";
             }
 
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            this.treeView1.Nodes.Clear();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tree File|*.tree";
+            openFileDialog.Title = "Enregistrement de l'arbre";
+            openFileDialog.ShowDialog();
+            string treeFilename = openFileDialog.FileName;
+            using (Stream file = File.Open(treeFilename, FileMode.Open))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                object obj = bf.Deserialize(file);
+                TreeNode[] nodeList = (obj as IEnumerable<TreeNode>).ToArray();
+                treeView1.Nodes.AddRange(nodeList);
+            }
         }
     }
 }
