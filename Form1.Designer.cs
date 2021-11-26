@@ -50,6 +50,7 @@ namespace TreeView
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.LabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btSaveTree = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -221,11 +222,22 @@ namespace TreeView
             this.LabelStatus.Size = new System.Drawing.Size(147, 20);
             this.LabelStatus.Text = "Exemple de treeview";
             // 
+            // btSaveTree
+            // 
+            this.btSaveTree.Location = new System.Drawing.Point(688, 199);
+            this.btSaveTree.Name = "btSaveTree";
+            this.btSaveTree.Size = new System.Drawing.Size(237, 43);
+            this.btSaveTree.TabIndex = 16;
+            this.btSaveTree.Text = "Enregistrer Arbre / support";
+            this.btSaveTree.UseVisualStyleBackColor = true;
+            this.btSaveTree.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 473);
+            this.Controls.Add(this.btSaveTree);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btSeeTree);
             this.Controls.Add(this.bt_GetBackTreeview);
@@ -268,6 +280,7 @@ namespace TreeView
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel LabelStatus;
+        private System.Windows.Forms.Button btSaveTree;
     }
 }
 

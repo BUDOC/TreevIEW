@@ -100,7 +100,7 @@ namespace TreeView
             LoadTree(treeView2, "FileSaveTreeview");
         }
 
-       
+
 
         private void buttonSuppressionNoeud_Click(object sender, EventArgs e)
         {
@@ -179,11 +179,11 @@ namespace TreeView
             string Texto;
             TreeNode tn = treeView1.SelectedNode;
             if (tn.Parent != null && tn.Parent.GetType() == typeof(TreeNode))
-            {                
-                 Texto = "Le Noeud " + treeView1.SelectedNode.Name
-                    + "\n dont le contenu est " + treeView1.SelectedNode.Text
-                    + "\n possède un parent nommé :" + tn.Parent.Name
-                    + "\n dont le contenu est " + tn.Parent.Text;
+            {
+                Texto = "Le Noeud " + treeView1.SelectedNode.Name
+                   + "\n dont le contenu est " + treeView1.SelectedNode.Text
+                   + "\n possède un parent nommé :" + tn.Parent.Name
+                   + "\n dont le contenu est " + tn.Parent.Text;
             }
             else
             {
@@ -309,6 +309,27 @@ namespace TreeView
                 MessageBox.Show("Pas de noeud trouvé", "Recherche de noeud par contenu", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             treeView1.Refresh();
+        }
+
+        // sauvegarde arbre sur DD
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Tree File|*.tree";
+            saveFileDialog1.Title = "Enregistrement de l'arbre";
+            saveFileDialog1.ShowDialog();
+            MessageBox.Show(saveFileDialog1.FileName);
+            {
+                string treeFilename = saveFileDialog1.FileName;
+            };
+            
+            using (Stream file = File.Open(saveFileDialog1.FileName, FileMode.Create))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(file, treeView1.Nodes.Cast<TreeNode>().ToList());
+                this.LabelStatus.Text = "Fichier " + saveFileDialog1.FileName + " enregistré.";
+            }
+
         }
     }
 }
