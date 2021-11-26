@@ -46,16 +46,12 @@ namespace TreeView
             this.label2 = new System.Windows.Forms.Label();
             this.btSaveTreeview = new System.Windows.Forms.Button();
             this.bt_GetBackTreeview = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxCle = new System.Windows.Forms.TextBox();
-            this.textBoxDesignation = new System.Windows.Forms.TextBox();
             this.btSeeTree = new System.Windows.Forms.Button();
-            this.tbCle = new System.Windows.Forms.TextBox();
-            this.LabCleDERecherche = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.bt_NewWindow = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -149,7 +145,7 @@ namespace TreeView
             this.treeView2.Location = new System.Drawing.Point(349, 42);
             this.treeView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(255, 386);
+            this.treeView2.Size = new System.Drawing.Size(281, 386);
             this.treeView2.TabIndex = 3;
             // 
             // label1
@@ -172,10 +168,10 @@ namespace TreeView
             // 
             // btSaveTreeview
             // 
-            this.btSaveTreeview.Location = new System.Drawing.Point(57, 437);
+            this.btSaveTreeview.Location = new System.Drawing.Point(683, 80);
             this.btSaveTreeview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSaveTreeview.Name = "btSaveTreeview";
-            this.btSaveTreeview.Size = new System.Drawing.Size(195, 23);
+            this.btSaveTreeview.Size = new System.Drawing.Size(243, 37);
             this.btSaveTreeview.TabIndex = 6;
             this.btSaveTreeview.Text = "Enregistre Treeview1";
             this.btSaveTreeview.UseVisualStyleBackColor = true;
@@ -183,106 +179,55 @@ namespace TreeView
             // 
             // bt_GetBackTreeview
             // 
-            this.bt_GetBackTreeview.Location = new System.Drawing.Point(349, 437);
+            this.bt_GetBackTreeview.Location = new System.Drawing.Point(683, 131);
             this.bt_GetBackTreeview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_GetBackTreeview.Name = "bt_GetBackTreeview";
-            this.bt_GetBackTreeview.Size = new System.Drawing.Size(243, 23);
+            this.bt_GetBackTreeview.Size = new System.Drawing.Size(243, 38);
             this.bt_GetBackTreeview.TabIndex = 7;
             this.bt_GetBackTreeview.Text = "Rappel fichier dans treeView2";
             this.bt_GetBackTreeview.UseVisualStyleBackColor = true;
             this.bt_GetBackTreeview.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(687, 231);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Clé";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(687, 275);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Désignation";
-            // 
-            // textBoxCle
-            // 
-            this.textBoxCle.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxCle.Location = new System.Drawing.Point(691, 251);
-            this.textBoxCle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxCle.Name = "textBoxCle";
-            this.textBoxCle.Size = new System.Drawing.Size(193, 22);
-            this.textBoxCle.TabIndex = 10;
-            this.textBoxCle.Text = "Key";
-            // 
-            // textBoxDesignation
-            // 
-            this.textBoxDesignation.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxDesignation.Location = new System.Drawing.Point(691, 295);
-            this.textBoxDesignation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxDesignation.Name = "textBoxDesignation";
-            this.textBoxDesignation.Size = new System.Drawing.Size(193, 22);
-            this.textBoxDesignation.TabIndex = 11;
-            this.textBoxDesignation.Text = "D";
-            // 
             // btSeeTree
             // 
             this.btSeeTree.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btSeeTree.Location = new System.Drawing.Point(683, 9);
+            this.btSeeTree.Location = new System.Drawing.Point(683, 12);
             this.btSeeTree.Name = "btSeeTree";
-            this.btSeeTree.Size = new System.Drawing.Size(194, 30);
+            this.btSeeTree.Size = new System.Drawing.Size(243, 45);
             this.btSeeTree.TabIndex = 14;
             this.btSeeTree.Text = "Affiche l\'arbre";
             this.btSeeTree.UseVisualStyleBackColor = true;
             this.btSeeTree.Click += new System.EventHandler(this.btSeeTree_Click);
-            // 
-            // tbCle
-            // 
-            this.tbCle.Location = new System.Drawing.Point(691, 395);
-            this.tbCle.Name = "tbCle";
-            this.tbCle.Size = new System.Drawing.Size(173, 22);
-            this.tbCle.TabIndex = 15;
-            this.tbCle.Text = "M1";
-            // 
-            // LabCleDERecherche
-            // 
-            this.LabCleDERecherche.AutoSize = true;
-            this.LabCleDERecherche.Location = new System.Drawing.Point(691, 378);
-            this.LabCleDERecherche.Name = "LabCleDERecherche";
-            this.LabCleDERecherche.Size = new System.Drawing.Size(166, 17);
-            this.LabCleDERecherche.TabIndex = 16;
-            this.LabCleDERecherche.Text = "Paramètre  de recherche";
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // bt_NewWindow
+            // statusStrip1
             // 
-            this.bt_NewWindow.Location = new System.Drawing.Point(905, 177);
-            this.bt_NewWindow.Name = "bt_NewWindow";
-            this.bt_NewWindow.Size = new System.Drawing.Size(75, 23);
-            this.bt_NewWindow.TabIndex = 1;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LabelStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 447);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(992, 26);
+            this.statusStrip1.TabIndex = 15;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // LabelStatus
+            // 
+            this.LabelStatus.Name = "LabelStatus";
+            this.LabelStatus.Size = new System.Drawing.Size(147, 20);
+            this.LabelStatus.Text = "Exemple de treeview";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 473);
-            this.Controls.Add(this.bt_NewWindow);
-            this.Controls.Add(this.LabCleDERecherche);
-            this.Controls.Add(this.tbCle);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btSeeTree);
-            this.Controls.Add(this.textBoxDesignation);
-            this.Controls.Add(this.textBoxCle);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.bt_GetBackTreeview);
             this.Controls.Add(this.btSaveTreeview);
             this.Controls.Add(this.label2);
@@ -295,6 +240,8 @@ namespace TreeView
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,10 +255,6 @@ namespace TreeView
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Button btSaveTreeview;
     private System.Windows.Forms.Button bt_GetBackTreeview;
-    private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.TextBox textBoxCle;
-    private System.Windows.Forms.TextBox textBoxDesignation;
     private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     private System.Windows.Forms.ToolStripMenuItem supprimerLeNoeudToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem insérerUnNoeudToolStripMenuItem;
@@ -321,12 +264,10 @@ namespace TreeView
         private System.Windows.Forms.ToolStripMenuItem afficheEnfantsToolStripMenuItem;
         private System.Windows.Forms.Button btSeeTree;
         private System.Windows.Forms.ToolStripMenuItem trouveToolStripMenuItem;
-        private System.Windows.Forms.TextBox tbCle;
-        private System.Windows.Forms.Label LabCleDERecherche;
         private System.Windows.Forms.ToolStripMenuItem trouveNoeudContenantToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Button bt_NewWindow;
-        
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel LabelStatus;
     }
 }
 

@@ -26,6 +26,7 @@ namespace TreeView
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.LabelStatus.Text = "Exemple de treeView";
             InitializeTree();
 
         }
@@ -99,10 +100,7 @@ namespace TreeView
             LoadTree(treeView2, "FileSaveTreeview");
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            treeView1.SelectedNode.Nodes.Add(textBoxCle.Text, textBoxDesignation.Text);
-        }
+       
 
         private void buttonSuppressionNoeud_Click(object sender, EventArgs e)
         {
@@ -136,14 +134,14 @@ namespace TreeView
 
             if (e.Node.Parent != null && e.Node.Parent.GetType() == typeof(TreeNode))
             {
-                this.Text = "Le Noeud " + treeView1.SelectedNode.Name
-                    + "\n dont le contenu est " + treeView1.SelectedNode.Text
-                    + "\n possède un parent nommé :" + e.Node.Parent.Name
-                    + "\n dont le contenu est " + e.Node.Parent.Text;
+                this.LabelStatus.Text = "Le Noeud " + treeView1.SelectedNode.Name
+                    + " dont le contenu est " + treeView1.SelectedNode.Text
+                    + " possède un parent nommé :" + e.Node.Parent.Name
+                    + " dont le contenu est " + e.Node.Parent.Text;
             }
             else
             {
-                this.Text = "Le Noeud " + treeView1.SelectedNode.Name + " n'a pas de parent.";
+                this.LabelStatus.Text = "Le Noeud " + treeView1.SelectedNode.Name + " n'a pas de parent.";
             }
         }
 
@@ -178,20 +176,21 @@ namespace TreeView
 
         private void afficheLeParentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string Texto;
             TreeNode tn = treeView1.SelectedNode;
             if (tn.Parent != null && tn.Parent.GetType() == typeof(TreeNode))
-            {
-                string Text = "Le Noeud " + treeView1.SelectedNode.Name
+            {                
+                 Texto = "Le Noeud " + treeView1.SelectedNode.Name
                     + "\n dont le contenu est " + treeView1.SelectedNode.Text
                     + "\n possède un parent nommé :" + tn.Parent.Name
                     + "\n dont le contenu est " + tn.Parent.Text;
             }
             else
             {
-                Text = "pas de parent!";
+                Texto = "pas de parent!";
 
             }
-            MessageBox.Show(Text);
+            MessageBox.Show(Texto);
         }
 
         private void AfficheEnfants()
@@ -252,7 +251,7 @@ namespace TreeView
 
         private void trouveToolStripMenuItem_MouseHover(object sender, EventArgs e)
         {
-            trouveToolStripMenuItem.Text = "Trouve Noeud de clé " + tbCle.Text;
+            // trouveToolStripMenuItem.Text = "Trouve Noeud de clé " + tbCle.Text;
         }
 
         private bool SearchNodeByKeyRecursivly(IEnumerable nodes, string searchFor)
@@ -297,7 +296,7 @@ namespace TreeView
 
         private void trouveNoeudContenantToolStripMenuItem_MouseHover(object sender, EventArgs e)
         {
-            trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant  " + tbCle.Text;
+            //     trouveNoeudContenantToolStripMenuItem.Text = "Trouve Noeud contenant  " + tbCle.Text;
         }
 
         private void trouveNoeudContenantToolStripMenuItem_Click(object sender, EventArgs e)
