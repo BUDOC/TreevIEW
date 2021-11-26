@@ -63,7 +63,7 @@ namespace TreevIEW
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
-            // Form2
+            // ForDataDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -72,8 +72,9 @@ namespace TreevIEW
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btOk);
-            this.Name = "Form2";
+            this.Name = "ForDataDialog";
             this.Text = "InputData";
+            this.Load += new System.EventHandler(this.ForDataDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

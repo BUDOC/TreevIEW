@@ -50,7 +50,6 @@ namespace TreeView
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxCle = new System.Windows.Forms.TextBox();
             this.textBoxDesignation = new System.Windows.Forms.TextBox();
-            this.buttonInsertionNoeud = new System.Windows.Forms.Button();
             this.btSeeTree = new System.Windows.Forms.Button();
             this.tbCle = new System.Windows.Forms.TextBox();
             this.LabCleDERecherche = new System.Windows.Forms.Label();
@@ -84,6 +83,7 @@ namespace TreeView
             this.trouveNoeudContenantToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(246, 196);
+            this.contextMenuStrip1.Text = "Menu";
             // 
             // supprimerLeNoeudToolStripMenuItem
             // 
@@ -230,19 +230,6 @@ namespace TreeView
             this.textBoxDesignation.TabIndex = 11;
             this.textBoxDesignation.Text = "D";
             // 
-            // buttonInsertionNoeud
-            // 
-            this.buttonInsertionNoeud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInsertionNoeud.ForeColor = System.Drawing.Color.Green;
-            this.buttonInsertionNoeud.Location = new System.Drawing.Point(610, 321);
-            this.buttonInsertionNoeud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonInsertionNoeud.Name = "buttonInsertionNoeud";
-            this.buttonInsertionNoeud.Size = new System.Drawing.Size(353, 36);
-            this.buttonInsertionNoeud.TabIndex = 12;
-            this.buttonInsertionNoeud.Text = "Insère noeud avec données ci-dessus";
-            this.buttonInsertionNoeud.UseVisualStyleBackColor = true;
-            this.buttonInsertionNoeud.Click += new System.EventHandler(this.button4_Click);
-            // 
             // btSeeTree
             // 
             this.btSeeTree.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
@@ -278,7 +265,7 @@ namespace TreeView
             // 
             // bt_NewWindow
             // 
-            this.bt_NewWindow.Location = new System.Drawing.Point(0, 0);
+            this.bt_NewWindow.Location = new System.Drawing.Point(905, 177);
             this.bt_NewWindow.Name = "bt_NewWindow";
             this.bt_NewWindow.Size = new System.Drawing.Size(75, 23);
             this.bt_NewWindow.TabIndex = 1;
@@ -292,7 +279,6 @@ namespace TreeView
             this.Controls.Add(this.LabCleDERecherche);
             this.Controls.Add(this.tbCle);
             this.Controls.Add(this.btSeeTree);
-            this.Controls.Add(this.buttonInsertionNoeud);
             this.Controls.Add(this.textBoxDesignation);
             this.Controls.Add(this.textBoxCle);
             this.Controls.Add(this.label4);
@@ -326,7 +312,6 @@ namespace TreeView
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.TextBox textBoxCle;
     private System.Windows.Forms.TextBox textBoxDesignation;
-    private System.Windows.Forms.Button buttonInsertionNoeud;
     private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     private System.Windows.Forms.ToolStripMenuItem supprimerLeNoeudToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem insérerUnNoeudToolStripMenuItem;

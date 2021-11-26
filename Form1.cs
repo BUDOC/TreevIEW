@@ -119,19 +119,14 @@ namespace TreeView
 
         private void RenemmerLeNoeudToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
             ForDataDialog F2 = new ForDataDialog("Renomme Noeud", "Nouveau nom");
             F2.ShowDialog();
             treeView1.SelectedNode.Text = F2.data;
-          
-            
         }
-
-       
 
         private void button1_Click(object sender, EventArgs e)
         {
-          //  RenommeNoeud();
+            //  RenommeNoeud();
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -159,7 +154,9 @@ namespace TreeView
 
         private void insérerUnNoeudToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            treeView1.SelectedNode.Nodes.Add(textBoxCle.Text, textBoxDesignation.Text);
+            FormInsereNoeud FenInsertNode = new FormInsereNoeud();
+            FenInsertNode.ShowDialog();
+            treeView1.SelectedNode.Nodes.Add(FenInsertNode.key, FenInsertNode.designation);
         }
 
         private void propriétésToolStripMenuItem_Click(object sender, EventArgs e)
@@ -235,7 +232,7 @@ namespace TreeView
         private void btSeeTree_Click(object sender, EventArgs e)
         {
             TreeNode racine = FindRootNode(treeView1.SelectedNode);
-            treeAffiche = " La Racinne est " + racine.Text + "\n\n";
+            treeAffiche = " La Racine est " + racine.Text + "\n\n";
             AfficheAbre(racine);
             MessageBox.Show(treeAffiche);
         }
@@ -244,8 +241,12 @@ namespace TreeView
         {
             ForDataDialog F2 = new ForDataDialog("Recherche par clé", "Clé");
             F2.ShowDialog();
-            string toSearch = F2.data;// this.tbCle.Text;
-            SearchNodeByKeyRecursivly(treeView1.Nodes, toSearch);
+            string toSearch = F2.data;
+            bool ok = SearchNodeByKeyRecursivly(treeView1.Nodes, toSearch);
+            if (ok)
+            {
+                MessageBox.Show("Pas de noeud trouvé par cette clé", "Recherche de noeud par Clé", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            };
             treeView1.Refresh();
         }
 
@@ -301,8 +302,13 @@ namespace TreeView
 
         private void trouveNoeudContenantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string toSearch = this.tbCle.Text;
-            SearchNodeByValueRecursivly(treeView1.Nodes, toSearch);
+            ForDataDialog F2 = new ForDataDialog("Recherche par désignation", "Noeud");
+            F2.ShowDialog();
+            string toSearch = F2.data;
+            if (SearchNodeByValueRecursivly(treeView1.Nodes, toSearch))
+            {
+                MessageBox.Show("Pas de noeud trouvé", "Recherche de noeud par contenu", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
             treeView1.Refresh();
         }
     }

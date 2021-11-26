@@ -20,6 +20,7 @@ namespace TreevIEW
         public ForDataDialog(string title, string designation)
         {
             InitializeComponent();
+            this.Text = title;
             this.label1.Text = designation;
         }
 
@@ -30,6 +31,11 @@ namespace TreevIEW
         {
             this.data = this.textBox1.Text;
             this.Close();
+        }
+
+        private void ForDataDialog_Load(object sender, EventArgs e)
+        {
+            this.textBox1.Select();
         }
     }
 }
