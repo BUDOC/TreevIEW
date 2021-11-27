@@ -52,6 +52,7 @@ namespace TreeView
             this.LabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.btSaveTree = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btTreeFromTextFile = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -225,7 +226,7 @@ namespace TreeView
             // 
             // btSaveTree
             // 
-            this.btSaveTree.Location = new System.Drawing.Point(689, 280);
+            this.btSaveTree.Location = new System.Drawing.Point(683, 217);
             this.btSaveTree.Name = "btSaveTree";
             this.btSaveTree.Size = new System.Drawing.Size(237, 43);
             this.btSaveTree.TabIndex = 16;
@@ -235,7 +236,7 @@ namespace TreeView
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(689, 344);
+            this.button1.Location = new System.Drawing.Point(683, 266);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(237, 43);
             this.button1.TabIndex = 17;
@@ -243,11 +244,22 @@ namespace TreeView
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // btTreeFromTextFile
+            // 
+            this.btTreeFromTextFile.Location = new System.Drawing.Point(683, 331);
+            this.btTreeFromTextFile.Name = "btTreeFromTextFile";
+            this.btTreeFromTextFile.Size = new System.Drawing.Size(237, 43);
+            this.btTreeFromTextFile.TabIndex = 18;
+            this.btTreeFromTextFile.Text = "Construction Arbre depuis ficj=hier texte";
+            this.btTreeFromTextFile.UseVisualStyleBackColor = true;
+            this.btTreeFromTextFile.Click += new System.EventHandler(this.btTreeFromTextFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 473);
+            this.Controls.Add(this.btTreeFromTextFile);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btSaveTree);
             this.Controls.Add(this.statusStrip1);
@@ -294,6 +306,7 @@ namespace TreeView
         private System.Windows.Forms.ToolStripStatusLabel LabelStatus;
         private System.Windows.Forms.Button btSaveTree;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btTreeFromTextFile;
     }
 }
 

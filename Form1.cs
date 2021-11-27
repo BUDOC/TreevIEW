@@ -348,5 +348,24 @@ namespace TreeView
                 treeView1.Nodes.AddRange(nodeList);
             }
         }
+
+        private void btTreeFromTextFile_Click(object sender, EventArgs e)
+        {
+            this.treeView2.Nodes.Clear();
+            using (StreamReader sr = File.OpenText(@"E:\Github\TreeView\bin\Debug\DataTree.txt"))
+            {
+                char car;
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    this.LabelStatus.Text = s;
+
+                    for (int i =0; i < s.Length; i++)
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }
