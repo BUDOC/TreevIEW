@@ -90,11 +90,13 @@ namespace TreeView
             }
         }
 
+        // sauvagarde  l'arbre
         private void button2_Click(object sender, EventArgs e)
         {
             SaveTree(treeView1, "FileSaveTreeview");
         }
 
+        //rappel sauvegarde d'un arbre
         private void button3_Click(object sender, EventArgs e)
         {
             LoadTree(treeView2, "FileSaveTreeview");
@@ -107,6 +109,7 @@ namespace TreeView
             treeView1.SelectedNode.Remove();
         }
 
+        // Affichage du menu contectuel au clic droit sur TreView1
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -210,6 +213,7 @@ namespace TreeView
             AfficheEnfants();
         }
 
+        // Affiche le contenu de l'arbre
         private void AfficheAbre(TreeNode workingNode)
         {
             foreach (TreeNode tn in workingNode.Nodes)
@@ -219,6 +223,7 @@ namespace TreeView
             }
         }
 
+        // trouve le noeud racine
         private TreeNode FindRootNode(TreeNode treeNode)
         {
             while (treeNode.Parent != null)
@@ -228,6 +233,7 @@ namespace TreeView
             return treeNode;
         }
 
+        // affiche le contenu de l'arbre
         private void btSeeTree_Click(object sender, EventArgs e)
         {
             TreeNode racine = FindRootNode(treeView1.SelectedNode);
@@ -236,6 +242,7 @@ namespace TreeView
             MessageBox.Show(treeAffiche);
         }
 
+        //  Menu contextuel : recherche d'un noeud par sa clé
         private void trouveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ForDataDialog F2 = new ForDataDialog("Recherche par clé", "Clé");
@@ -351,20 +358,66 @@ namespace TreeView
 
         private void btTreeFromTextFile_Click(object sender, EventArgs e)
         {
-            this.treeView2.Nodes.Clear();
+            this.treeView1.Nodes.Clear();
+            TreeNode racine = treeView1.Nodes.Add(string.Empty, "RACINE");
+            treeView1.SelectedNode = racine;
+            treeView1.SelectedNode.BackColor = Color.AliceBlue;
+
+
+            // Pour tous les mots (une ligne = 1 mot).
             using (StreamReader sr = File.OpenText(@"E:\Github\TreeView\bin\Debug\DataTree.txt"))
             {
-                char car;
+                //char car;
+                string discriminator = "";
                 string s = "";
+                string key = "";
+                string valeur = "";
+                TreeNode noeudCourant;
+                noeudCourant = racine;
+                Color nodeColor = Color.White;
+
+                // tant que la fin du fichier texte n'est pa atteinte               
                 while ((s = sr.ReadLine()) != null)
                 {
-                    this.LabelStatus.Text = s;
-
-                    for (int i =0; i < s.Length; i++)
+                    // mot lu et mis dans la status barre.
+                    for (int i =0; i<s.Length; i++) { valeur += i.ToString() + "  " + s[i] +"  |  "; }
+                    this.LabelStatus.Text = s +"  Longueur  = " +s.Length.ToString() +"  " + valeur;
+                                      
+                    for (int i = 0; i < s.Length; i++)
                     {
+                        key = s[i] + discriminator;
+                        valeur =  s[i].ToString();                     
+                        if (i == s.Length-1 )
+                        {
+                            discriminator = "FM";
+                            nodeColor = Color.Yellow;
+                        }
+                        else
+                        {
+                            discriminator = "PM";
+                            nodeColor = Color.White;
+                        }
+
+                        // ajout noeud
+                        TreeNode newNode = treeView1.SelectedNode.Nodes.Add(key, valeur);                        
+                        treeView1.SelectedNode = newNode;
+                        treeView1.SelectedNode.BackColor = nodeColor;
+
+                        noeudCourant = newNode;     
+                        treeView1.SelectedNode = newNode;
+                        //si fin de mot  alors le noeud courent est la racine
+
+                        if (i== s.Length-1)
+                        {
+                          //  MessageBox.Show("ctrl");
+                            treeView1.SelectedNode = racine;
+                            noeudCourant = racine;
+                        }
 
                     }
                 }
+                this.Refresh();
+                treeView1.ExpandAll();
             }
         }
     }
