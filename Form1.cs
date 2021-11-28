@@ -45,7 +45,7 @@ namespace TreeView
             treeView1.ImageIndex = 0;
             treeView1.SelectedImageIndex = 1;
 
-           
+
 
             // Add parent node
             TreeNode noeud = treeView1.Nodes.Add("Automobile");
@@ -354,6 +354,7 @@ namespace TreeView
 
         }
 
+        // ou=vre une fichier contenant l'enregistrement d'un treeview
         private void button1_Click_2(object sender, EventArgs e)
         {
             this.treeView1.Nodes.Clear();
@@ -372,6 +373,83 @@ namespace TreeView
         }
 
         private void btTreeFromTextFile_Click(object sender, EventArgs e)
+        {
+            this.treeView1.Nodes.Clear();
+            TreeNode racine = treeView1.Nodes.Add(string.Empty, "");
+            racine.ImageIndex = 1;
+            racine.SelectedImageIndex = 2;
+            treeView1.SelectedNode = racine;
+            treeView1.SelectedNode.BackColor = Color.AliceBlue;
+            treeView1.CheckBoxes = false;
+            racine.Checked = false;
+
+            // Pour tous les mots (une ligne = 1 mot).
+            using (StreamReader sr = File.OpenText(@"E:\Github\TreeView\bin\Debug\DataTree.txt"))
+            {
+                char car = ' ';
+                string s = "";
+                Color nodeColor = Color.White;
+                bool lettreTrouvee, cochee;
+                treeView1.SelectedNode = racine;
+                TreeNodeCollection Childrens = racine.Nodes;
+                // tant que la fin du fichier texte n'est pa atteinte.               
+                while ((s = sr.ReadLine()) != null)
+                {
+                    // pour chaque lettre du mot.                                                                            
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        car = s[i];
+                        lettreTrouvee = false;
+                        foreach (TreeNode workingNode in Childrens)
+                        {
+                            cochee = workingNode.Checked;
+                            // lettre trouvee
+                            if (workingNode.Text[0] == car)
+                            {
+                                treeView1.SelectedNode = workingNode;
+                                Childrens = workingNode.Nodes;
+                                lettreTrouvee = true;
+                            }
+                            workingNode.Checked = cochee;
+                            if (i == s.Length - 1)
+                            {
+                                workingNode.Checked = true;
+                                workingNode.BackColor = Color.Salmon;
+                            }
+                        }
+                        // lettre non trouvée
+                        if (!lettreTrouvee)
+                        {
+                            TreeNode nodeAdded = treeView1.SelectedNode.Nodes.Add("", s[i].ToString());
+                            treeView1.SelectedNode = nodeAdded;
+
+                            nodeAdded.Checked = false;
+                            Childrens = treeView1.SelectedNode.Nodes;
+                            if (i == s.Length - 1)
+                            {
+                                treeView1.SelectedNode.BackColor = Color.Yellow;
+                                treeView1.SelectedNode.Checked = true;
+                            }
+                            if (i == 0)
+                            {
+                                treeView1.SelectedNode.ImageIndex = 2;
+                            }
+                        }
+
+                    }// for  i
+                    treeView1.SelectedNode = racine;
+                    Childrens = racine.Nodes;
+                } //wile
+                racine.Checked = false;
+            }// using
+            this.Refresh();
+            treeView1.ExpandAll();
+        }
+
+        // EcrtMots();
+
+
+        private void EcritMots()
         {
             this.treeView1.Nodes.Clear();
             TreeNode racine = treeView1.Nodes.Add(string.Empty, "RACINE");
@@ -398,7 +476,8 @@ namespace TreeView
                     for (int i = 0; i < s.Length; i++)
                     {
                         key = s[i] + discriminator;
-                        valeur = s[i].ToString();
+                        valeur = s.Substring(0, i + 1);
+                        //valeur = s[i].ToString();
                         if (i == s.Length - 1)
                         {
                             discriminator = "FM";
