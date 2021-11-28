@@ -59,7 +59,10 @@ namespace TreeView
             // 
             // treeView1
             // 
+            this.treeView1.CheckBoxes = true;
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.treeView1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.treeView1.LineColor = System.Drawing.Color.Maroon;
             this.treeView1.Location = new System.Drawing.Point(21, 42);
             this.treeView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeView1.Name = "treeView1";

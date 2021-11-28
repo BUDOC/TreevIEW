@@ -32,6 +32,21 @@ namespace TreeView
         }
         private void InitializeTree()
         {
+            // Load the images in an ImageList.
+            ImageList myImageList = new ImageList();
+            myImageList.Images.Add(Image.FromFile("IconOiseeau.gif"));
+            myImageList.Images.Add(Image.FromFile("IconTree.gif"));
+            myImageList.Images.Add(Image.FromFile("iconetreeSelected.gif"));
+
+            // Assign the ImageList to the TreeView.
+            treeView1.ImageList = myImageList;
+
+            // Set the TreeView control's default image and selected image indexes.
+            treeView1.ImageIndex = 0;
+            treeView1.SelectedImageIndex = 1;
+
+           
+
             // Add parent node
             TreeNode noeud = treeView1.Nodes.Add("Automobile");
 
@@ -360,6 +375,8 @@ namespace TreeView
         {
             this.treeView1.Nodes.Clear();
             TreeNode racine = treeView1.Nodes.Add(string.Empty, "RACINE");
+            racine.ImageIndex = 1;
+            racine.SelectedImageIndex = 2;
             treeView1.SelectedNode = racine;
             treeView1.SelectedNode.BackColor = Color.AliceBlue;
 
@@ -372,6 +389,7 @@ namespace TreeView
                 string key = "";
                 string valeur = "";
                 Color nodeColor = Color.White;
+                bool coche;
 
                 // tant que la fin du fichier texte n'est pa atteinte.               
                 while ((s = sr.ReadLine()) != null)
@@ -385,20 +403,23 @@ namespace TreeView
                         {
                             discriminator = "FM";
                             nodeColor = Color.Yellow;
+                            coche = true;
                         }
                         else
                         {
                             discriminator = "PM";
                             nodeColor = Color.White;
+                            coche = false;
                         }
 
                         // ajout noeud
                         TreeNode newNode = treeView1.SelectedNode.Nodes.Add(key, valeur);
                         treeView1.SelectedNode = newNode;
+                        treeView1.SelectedNode.Checked = coche;
                         treeView1.SelectedNode.BackColor = nodeColor;
                         treeView1.SelectedNode = newNode;
 
-                        //si fin de mot  alors le noeud courent est la racine
+                        //si fin de mot  alors le noeud courant est la racine
                         if (i == s.Length - 1)
                         {
                             treeView1.SelectedNode = racine;
