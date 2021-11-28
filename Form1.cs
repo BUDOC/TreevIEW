@@ -351,7 +351,6 @@ namespace TreeView
                 bf.Serialize(file, treeView1.Nodes.Cast<TreeNode>().ToList());
                 this.LabelStatus.Text = "Fichier " + saveFileDialog1.FileName + " enregistré.";
             }
-
         }
 
         // ou=vre une fichier contenant l'enregistrement d'un treeview
@@ -374,6 +373,7 @@ namespace TreeView
 
         private void btTreeFromTextFile_Click(object sender, EventArgs e)
         {
+            // this.treeView1.Visible =false;
             this.treeView1.Nodes.Clear();
             TreeNode racine = treeView1.Nodes.Add(string.Empty, "");
             racine.ImageIndex = 1;
@@ -383,8 +383,9 @@ namespace TreeView
             treeView1.CheckBoxes = false;
             racine.Checked = false;
 
+
             // Pour tous les mots (une ligne = 1 mot).
-            using (StreamReader sr = File.OpenText(@"E:\Github\TreeView\bin\Debug\DataTree.txt"))
+            using (StreamReader sr = File.OpenText(@"E:\Github\TreeView\bin\Debug\MOTS TRADUITS.txt"))
             {
                 char car = ' ';
                 string s = "";
@@ -441,7 +442,7 @@ namespace TreeView
                     Childrens = racine.Nodes;
                 } //wile
                 racine.Checked = false;
-            }// using
+            }// using          
             this.Refresh();
             treeView1.ExpandAll();
         }
@@ -505,9 +506,15 @@ namespace TreeView
                         }
                     }
                 }
-                this.Refresh();
+                this.treeView1.Refresh();
                 treeView1.ExpandAll();
             }
+        }
+
+        private void btDevelopper_Click(object sender, EventArgs e)
+        {
+            this.treeView1.CheckBoxes = false;
+            this.treeView1.ExpandAll();
         }
     }
 }
