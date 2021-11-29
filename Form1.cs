@@ -359,7 +359,7 @@ namespace TreeView
             this.treeView1.Nodes.Clear();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Tree File|*.tree";
-            openFileDialog.Title = "Enregistrement de l'arbre";
+            openFileDialog.Title = "Rappel de l'arbre";
             openFileDialog.ShowDialog();
             string treeFilename = openFileDialog.FileName;
             using (Stream file = File.Open(treeFilename, FileMode.Open))
@@ -382,67 +382,75 @@ namespace TreeView
             treeView1.SelectedNode.BackColor = Color.AliceBlue;
             treeView1.CheckBoxes = false;
             racine.Checked = false;
-
-
-            // Pour tous les mots (une ligne = 1 mot).
-            using (StreamReader sr = File.OpenText(@"E:\Github\TreeView\bin\Debug\MOTS TRADUITS.txt"))
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text File|*.txt  | All files|*.*";
+            openFileDialog.Title = "Ouverture du fichier texte.";
+            openFileDialog.ShowDialog();
+            string treeFilename = openFileDialog.FileName;
+            if (treeFilename != string.Empty)
             {
-                char car = ' ';
-                string s = "";
-                Color nodeColor = Color.White;
-                bool lettreTrouvee, cochee;
-                treeView1.SelectedNode = racine;
-                TreeNodeCollection Childrens = racine.Nodes;
-                // tant que la fin du fichier texte n'est pa atteinte.               
-                while ((s = sr.ReadLine()) != null)
+                // Pour tous les mots (une ligne = 1 mot).
+                using (StreamReader sr = File.OpenText(treeFilename))
                 {
-                    // pour chaque lettre du mot.                                                                            
-                    for (int i = 0; i < s.Length; i++)
-                    {
-                        car = s[i];
-                        lettreTrouvee = false;
-                        foreach (TreeNode workingNode in Childrens)
-                        {
-                            cochee = workingNode.Checked;
-                            // lettre trouvee
-                            if (workingNode.Text[0] == car)
-                            {
-                                treeView1.SelectedNode = workingNode;
-                                Childrens = workingNode.Nodes;
-                                lettreTrouvee = true;
-                            }
-                            workingNode.Checked = cochee;
-                            if (i == s.Length - 1)
-                            {
-                                workingNode.Checked = true;
-                                workingNode.BackColor = Color.Salmon;
-                            }
-                        }
-                        // lettre non trouvée
-                        if (!lettreTrouvee)
-                        {
-                            TreeNode nodeAdded = treeView1.SelectedNode.Nodes.Add("", s[i].ToString());
-                            treeView1.SelectedNode = nodeAdded;
-
-                            nodeAdded.Checked = false;
-                            Childrens = treeView1.SelectedNode.Nodes;
-                            if (i == s.Length - 1)
-                            {
-                                treeView1.SelectedNode.BackColor = Color.Yellow;
-                                treeView1.SelectedNode.Checked = true;
-                            }
-                            if (i == 0)
-                            {
-                                treeView1.SelectedNode.ImageIndex = 2;
-                            }
-                        }
-
-                    }// for  i
+                    char car = ' ';
+                    string s = "";
+                    Color nodeColor = Color.White;
+                    bool lettreTrouvee, cochee;
                     treeView1.SelectedNode = racine;
-                    Childrens = racine.Nodes;
-                } //wile
-                racine.Checked = false;
-            }// using          
+                    TreeNodeCollection Childrens = racine.Nodes;
+                    // tant que la fin du fichier texte n'est pa atteinte.               
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        // pour chaque lettre du mot.                                                                            
+                        for (int i = 0; i < s.Length; i++)
+                        {
+                            car = s[i];
+                            lettreTrouvee = false;
+                            foreach (TreeNode workingNode in Childrens)
+                            {
+                                cochee = workingNode.Checked;
+                                // lettre trouvee
+                                if (workingNode.Text[0] == car)
+                                {
+                                    treeView1.SelectedNode = workingNode;
+                                    Childrens = workingNode.Nodes;
+                                    lettreTrouvee = true;
+                                }
+                                workingNode.Checked = cochee;
+                                if (i == s.Length - 1)
+                                {
+                                    workingNode.Checked = true;
+                                    workingNode.BackColor = Color.Salmon;
+                                }
+                            }
+                            // lettre non trouvée
+                            if (!lettreTrouvee)
+                            {
+                                TreeNode nodeAdded = treeView1.SelectedNode.Nodes.Add("", s[i].ToString());
+                                treeView1.SelectedNode = nodeAdded;
+
+                                nodeAdded.Checked = false;
+                                Childrens = treeView1.SelectedNode.Nodes;
+                                if (i == s.Length - 1)
+                                {
+                                    treeView1.SelectedNode.BackColor = Color.Yellow;
+                                    treeView1.SelectedNode.Checked = true;
+                                }
+                                if (i == 0)
+                                {
+                                    treeView1.SelectedNode.ImageIndex = 2;
+                                }
+                            }
+
+                        }// for  i
+                        treeView1.SelectedNode = racine;
+                        Childrens = racine.Nodes;
+                    } //wile
+                    racine.Checked = false;
+                }// using
+            }
+            else
+                MessageBox.Show("Ouveture du fichier impossible", " Mauvais nom.", MessageBoxButtons.OK);
             this.Refresh();
             treeView1.ExpandAll();
         }
