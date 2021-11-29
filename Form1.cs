@@ -383,7 +383,7 @@ namespace TreeView
             treeView1.CheckBoxes = false;
             racine.Checked = false;
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Text File|*.txt  | All files|*.*";
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
             openFileDialog.Title = "Ouverture du fichier texte.";
             openFileDialog.ShowDialog();
             string treeFilename = openFileDialog.FileName;
@@ -395,7 +395,7 @@ namespace TreeView
                     char car = ' ';
                     string s = "";
                     Color nodeColor = Color.White;
-                    bool lettreTrouvee, cochee;
+                    bool lettreTrouvee, memoCoche;
                     treeView1.SelectedNode = racine;
                     TreeNodeCollection Childrens = racine.Nodes;
                     // tant que la fin du fichier texte n'est pa atteinte.               
@@ -408,19 +408,22 @@ namespace TreeView
                             lettreTrouvee = false;
                             foreach (TreeNode workingNode in Childrens)
                             {
-                                cochee = workingNode.Checked;
+                                memoCoche = workingNode.Checked;
                                 // lettre trouvee
                                 if (workingNode.Text[0] == car)
                                 {
-                                    treeView1.SelectedNode = workingNode;
-                                    Childrens = workingNode.Nodes;
-                                    lettreTrouvee = true;
+                                    
+                                        treeView1.SelectedNode = workingNode;
+                                        Childrens = workingNode.Nodes;
+                                        lettreTrouvee = true;
+                                    
                                 }
-                                workingNode.Checked = cochee;
+                                workingNode.Checked = memoCoche;
+
+                                // ##################  c'est ici que c'est faux!
                                 if (i == s.Length - 1)
                                 {
-                                    workingNode.Checked = true;
-                                    workingNode.BackColor = Color.Salmon;
+                                    workingNode.Checked = true;                                
                                 }
                             }
                             // lettre non trouvée
