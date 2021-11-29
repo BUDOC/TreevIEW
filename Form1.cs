@@ -34,16 +34,18 @@ namespace TreeView
         {
             // Load the images in an ImageList.
             ImageList myImageList = new ImageList();
+            myImageList.Images.Add(Image.FromFile("Arouge.png"));
+            myImageList.Images.Add(Image.FromFile("iconetreeSelected.gif"));
+            myImageList.Images.Add(Image.FromFile("Avert.png"));
             myImageList.Images.Add(Image.FromFile("IconOiseeau.gif"));
             myImageList.Images.Add(Image.FromFile("IconTree.gif"));
-            myImageList.Images.Add(Image.FromFile("iconetreeSelected.gif"));
 
             // Assign the ImageList to the TreeView.
             treeView1.ImageList = myImageList;
 
             // Set the TreeView control's default image and selected image indexes.
-            treeView1.ImageIndex = 0;
-            treeView1.SelectedImageIndex = 1;
+            treeView1.ImageIndex = 2;
+            treeView1.SelectedImageIndex = 3;
 
 
 
@@ -379,6 +381,7 @@ namespace TreeView
             racine.ImageIndex = 1;
             racine.SelectedImageIndex = 2;
             treeView1.SelectedNode = racine;
+            treeView1.SelectedNode.ImageIndex = 4;
             treeView1.SelectedNode.BackColor = Color.AliceBlue;
             treeView1.CheckBoxes = false;
             racine.Checked = false;
@@ -437,6 +440,7 @@ namespace TreeView
                                 if (i == s.Length - 1)
                                 {
                                     treeView1.SelectedNode.BackColor = Color.Yellow;
+                                    treeView1.SelectedNode.ImageIndex = 0;
                                     treeView1.SelectedNode.Checked = true;
                                 }
                                 if (i == 0)
@@ -450,6 +454,7 @@ namespace TreeView
                         Childrens = racine.Nodes;
                     } //wile
                     racine.Checked = false;
+                    racine.ImageIndex = 4;                   
                 }// using
             }
             else
